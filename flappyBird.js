@@ -3,13 +3,13 @@ var ctx = cvs.getContext("2d");
 
 // load images
 
-var bird = new Image();
+var superwoman = new Image();
 var bg = new Image();
 var fg = new Image();
 var pipeNorth = new Image();
 var pipeSouth = new Image();
 
-bird.src = "images/superwoman.png";
+superwoman.src = "images/superwoman.png";
 bg.src = "images/bg.png";
 fg.src = "images/fg.png";
 pipeNorth.src = "images/pipeNorth.png";
@@ -81,7 +81,7 @@ function draw(){
 
         // detect collision
         
-        if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){
+        if( bX + superwoman.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+superwoman.height >= pipe[i].y+constant) || bY + superwoman.height >=  cvs.height - fg.height){
             location.reload(); // reload the page
         }
         
@@ -95,7 +95,7 @@ function draw(){
 
     ctx.drawImage(fg,0,cvs.height - fg.height);
     
-    ctx.drawImage(bird,bX,bY);
+    ctx.drawImage(superwoman,bX,bY);
     
     bY += gravity;
     
@@ -107,9 +107,10 @@ function draw(){
     
 }
 
+//randomize the next north pipe height
 function randNorthPipePosY(i){
     Y=250;
-    while(Y>(pipe[i].y+75) || Y<(pipe[i].y-75))
+    while(Y>(pipe[i].y+75) || Y<(pipe[i].y-75)) //make sure the next pipe is not too high or too low, player can fly through
     Y=Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height;
     return Y;
 }
