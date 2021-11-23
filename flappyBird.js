@@ -7,13 +7,13 @@ var superwoman = new Image();
 var bg = new Image();
 var fg = new Image();
 var pipeNorth = new Image();
-var pipeSouth = new Image();
+var tree = new Image();
 
 superwoman.src = "images/superwoman.png";
 bg.src = "images/bg.png";
 fg.src = "images/fg.png";
-pipeNorth.src = "images/pipeNorth.png";
-pipeSouth.src = "images/pipeSouth.png";
+pipeNorth.src = "images/pipeWithSmoke.png";
+tree.src = "images/tree.png";
 
 
 // some variables
@@ -33,7 +33,7 @@ var score = 0;
 var fly = new Audio();
 var scor = new Audio();
 
-fly.src = "sounds/fly.mp3";
+fly.src = "sounds/Rake Swing Whoosh Close.mp3";
 scor.src = "sounds/score.mp3";
 
 // on key down
@@ -67,7 +67,7 @@ function draw(){
         
         constant = pipeNorth.height+gap;
         ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);
-        ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);
+        ctx.drawImage(tree,pipe[i].x,pipe[i].y+constant);
              
         pipe[i].x--;
         
@@ -110,7 +110,7 @@ function draw(){
 //randomize the next north pipe height
 function randNorthPipePosY(i){
     Y=250;
-    while(Y>(pipe[i].y+75) || Y<(pipe[i].y-75)) //make sure the next pipe is not too high or too low, player can fly through
+    while(Y>(pipe[i].y+55) || Y<(pipe[i].y-75)) //make sure the next pipe is not too high or too low, player can fly through
     Y=Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height;
     return Y;
 }
