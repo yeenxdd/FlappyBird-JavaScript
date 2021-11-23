@@ -9,7 +9,7 @@ var fg = new Image();
 var pipeNorth = new Image();
 var pipeSouth = new Image();
 
-bird.src = "images/bird.png";
+bird.src = "images/superwoman.png";
 bg.src = "images/bg.png";
 fg.src = "images/fg.png";
 pipeNorth.src = "images/pipeNorth.png";
@@ -54,6 +54,8 @@ pipe[0] = {
     y : 0
 };
 
+var Y=250; // randomize north pipe height
+
 // draw images
 
 function draw(){
@@ -70,9 +72,10 @@ function draw(){
         pipe[i].x--;
         
         if( pipe[i].x == 125 ){
+            randNorthPipePosY(i);
             pipe.push({
                 x : cvs.width,
-                y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height
+                y : Y
             }); 
         }
 
@@ -102,6 +105,13 @@ function draw(){
     
     requestAnimationFrame(draw);
     
+}
+
+function randNorthPipePosY(i){
+    Y=250;
+    while(Y>(pipe[i].y+75) || Y<(pipe[i].y-75))
+    Y=Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height;
+    return Y;
 }
 
 draw();
